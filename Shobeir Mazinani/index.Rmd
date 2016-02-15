@@ -1,0 +1,40 @@
+---
+title       : Automatic Versus Manual Which one is better for mpg
+subtitle    : 
+author      : Shobeir
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Motor Trend Car Road Tests
+
+### Description
+
+The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
+
+--- .class #id 
+
+## Summary of Regression Model
+```{r}
+data("mtcars")
+summary(lm(mpg ~ ., data = mtcars))$coefficients
+```
+---
+## Regression Model Continue
+Based on the coefficients, it seems that with moving from automatic to manual 2.5 units increase in the `mpg` accounting for all the other parameters. Now, we build 5 models with `am`, `wt` (weight), `qsec` (1/4 mile time), and `cyl` (number of cylinders).
+
+## Shiny App
+
+The Shiny App uses three of the most important factors to plot their effects on `mpg` with respect to the `automatic` versus `manual` transmission.
+The app can be found here at:
+[Slidify App](https://shobeir.shinyapps.io/data_product/)
+
+
+
+
+
