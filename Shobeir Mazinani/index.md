@@ -17,9 +17,28 @@ knit        : slidify::knit2slides
 
 The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
 
+
+[, 1]	 mpg	 Miles/(US) gallon
+[, 2]	 cyl	 Number of cylinders
+[, 3]	 disp	 Displacement (cu.in.)
+[, 4]	 hp	 Gross horsepower
+[, 5]	 drat	 Rear axle ratio
+[, 6]	 wt	 Weight (1000 lbs)
+[, 7]	 qsec	 1/4 mile time
+[, 8]	 vs	 V/S
+[, 9]	 am	 Transmission (0 = automatic, 1 = manual)
+[,10]	 gear	 Number of forward gears
+[,11]	 carb	 Number of carburetors
+Source
+
+Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391–411.
+
 --- .class #id 
 
 ## Summary of Regression Model
+
+Based on the coefficients, it seems that with moving from automatic to manual 2.5 units increase in the `mpg` accounting for all the other parameters. Now, we build 5 models with `am`, `wt` (weight), `qsec` (1/4 mile time), and `cyl` (number of cylinders).
+
 
 ```r
 data("mtcars")
@@ -40,10 +59,23 @@ summary(lm(mpg ~ ., data = mtcars))$coefficients
 ## gear         0.65541302  1.49325996  0.4389142 0.66520643
 ## carb        -0.19941925  0.82875250 -0.2406258 0.81217871
 ```
----
-## Regression Model Continue
-Based on the coefficients, it seems that with moving from automatic to manual 2.5 units increase in the `mpg` accounting for all the other parameters. Now, we build 5 models with `am`, `wt` (weight), `qsec` (1/4 mile time), and `cyl` (number of cylinders).
 
+---
+
+## Exploratory Plot
+
+
+```
+## Warning in ggpairs(mtcars, colour = "am", alpha = 0.4): Extra arguments:
+## "colour", "alpha" are being ignored. If these are meant to be aesthetics,
+## submit them using the 'mapping' variable within ggpairs with ggplot2::aes
+## or ggplot2::aes_string.
+```
+
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png) 
+
+
+---
 ## Shiny App
 
 The Shiny App uses three of the most important factors to plot their effects on `mpg` with respect to the `automatic` versus `manual` transmission.

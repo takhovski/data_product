@@ -50,6 +50,21 @@
 
 <p>The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).</p>
 
+<p>[, 1]    mpg     Miles/(US) gallon
+[, 2]    cyl     Number of cylinders
+[, 3]    disp    Displacement (cu.in.)
+[, 4]    hp  Gross horsepower
+[, 5]    drat    Rear axle ratio
+[, 6]    wt  Weight (1000 lbs)
+[, 7]    qsec    1/4 mile time
+[, 8]    vs  V/S
+[, 9]    am  Transmission (0 = automatic, 1 = manual)
+[,10]    gear    Number of forward gears
+[,11]    carb    Number of carburetors
+Source</p>
+
+<p>Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391–411.</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -59,7 +74,9 @@
     <h2>Summary of Regression Model</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">data(&quot;mtcars&quot;)
+    <p>Based on the coefficients, it seems that with moving from automatic to manual 2.5 units increase in the <code>mpg</code> accounting for all the other parameters. Now, we build 5 models with <code>am</code>, <code>wt</code> (weight), <code>qsec</code> (1/4 mile time), and <code>cyl</code> (number of cylinders).</p>
+
+<pre><code class="r">data(&quot;mtcars&quot;)
 summary(lm(mpg ~ ., data = mtcars))$coefficients
 </code></pre>
 
@@ -77,15 +94,33 @@ summary(lm(mpg ~ ., data = mtcars))$coefficients
 ## carb        -0.19941925  0.82875250 -0.2406258 0.81217871
 </code></pre>
 
-<hr>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<h2>Regression Model Continue</h2>
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Exploratory Plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>## Warning in ggpairs(mtcars, colour = &quot;am&quot;, alpha = 0.4): Extra arguments:
+## &quot;colour&quot;, &quot;alpha&quot; are being ignored. If these are meant to be aesthetics,
+## submit them using the &#39;mapping&#39; variable within ggpairs with ggplot2::aes
+## or ggplot2::aes_string.
+</code></pre>
 
-<p>Based on the coefficients, it seems that with moving from automatic to manual 2.5 units increase in the <code>mpg</code> accounting for all the other parameters. Now, we build 5 models with <code>am</code>, <code>wt</code> (weight), <code>qsec</code> (1/4 mile time), and <code>cyl</code> (number of cylinders).</p>
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </p>
 
-<h2>Shiny App</h2>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<p>The Shiny App uses three of the most important factors to plot their effects on <code>mpg</code> with respect to the <code>automatic</code> versus <code>manual</code> transmission.
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Shiny App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The Shiny App uses three of the most important factors to plot their effects on <code>mpg</code> with respect to the <code>automatic</code> versus <code>manual</code> transmission.
 The app can be found here at:
 <a href="https://shobeir.shinyapps.io/data_product/">Slidify App</a></p>
 
@@ -107,6 +142,18 @@ The app can be found here at:
       <a href="#" target="_self" rel='tooltip' 
         data-slide=2 title='Summary of Regression Model'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Exploratory Plot'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Shiny App'>
+         4
       </a>
     </li>
   </ul>
